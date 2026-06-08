@@ -747,5 +747,10 @@ const header=document.querySelector('.header');
 window.addEventListener('scroll',()=>{
   header.style.boxShadow=window.scrollY>10?'0 2px 16px rgba(0,0,0,.12)':'0 2px 12px rgba(0,0,0,.08)';
 });
+      // FIX: NAV TABS scroll + section IDs + body background
+      document.documentElement.style.scrollBehavior='smooth';
+      document.body.style.background='#0d0d0d';
+      document.querySelectorAll('.section').forEach((s,i)=>{const ids=['club-crazy','suplementos','linea-pro','novedades','crazy-beauty'];if(ids[i])s.id=ids[i];});
+      document.querySelectorAll('.top-nav a').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const id=this.getAttribute('href').replace('#','');const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});document.querySelectorAll('.top-nav a').forEach(x=>x.classList.remove('active'));this.classList.add('active');});});
 </script>
 <div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 0; transition: opacity 0.3s ease-in-out;"><div id="claude-agent-glow-border-inner" style="position: absolute; inset: 0px; will-change: opacity; box-shadow: rgba(217, 119, 87, 0.7) 0px 0px 15px inset, rgba(217, 119, 87, 0.5) 0px 0px 25px inset, rgba(217, 119, 87, 0.2) 0px 0px 35px inset;"></div></div></body></html>
